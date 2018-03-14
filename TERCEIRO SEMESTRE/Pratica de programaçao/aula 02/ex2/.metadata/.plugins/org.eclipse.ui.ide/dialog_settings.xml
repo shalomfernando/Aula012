@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="J:\TERCEIRO SEMESTRE\Pratica de programaçao\aula 02\ex2\src"/>
+		<item value="J:\TERCEIRO SEMESTRE\Pratica de programaçao\aula 02\ex2"/>
+		<item value="J:\TERCEIRO SEMESTRE\Pratica de programaçao\aula 02\shalomProjetos"/>
+		<item value="J:\TERCEIRO SEMESTRE\Pratica de programaçao\aula 02\ex2\src\Zhalom"/>
+	</list>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="418" key="DIALOG_X_ORIGIN"/>
+		<item value="251" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

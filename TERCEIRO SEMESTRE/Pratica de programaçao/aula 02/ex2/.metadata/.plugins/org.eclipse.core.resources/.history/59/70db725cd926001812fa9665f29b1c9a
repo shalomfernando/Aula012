@@ -1,0 +1,82 @@
+package test;
+import ex1.Pais;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.sql.Connection;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.Test;
+import org.junit.runners.MethodSorters;
+
+import ex1.Pais;
+import ex1.Pais;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+class PaisTest {
+	Pais pais, copia;
+	static int id = 0;
+	
+	
+	
+	@Before
+	public void setUp() throws Exception {
+		System.out.println("setup");
+		pais = new Pais(8, "Italia", 2077, 12345.12000);
+		copia = new Pais(8, "Italia", 2077, 12345.12000 );
+		System.out.println(pais);
+		System.out.println(copia);
+		System.out.println(id);
+	}
+	@Test
+	public void test00Carregar() {
+		System.out.println("carregar");
+		
+		 pais = new Pais(1, "Brasil",2077,12345.12000);
+         System.out.println(pais);
+         pais.carregar();
+         System.out.println(pais);
+
+		
+	}
+	@Test
+	public void test01Criar() {
+	assertEquals("testa criacao", pais, copia);
+	pais = new Pais(1, "Italia", 91, 12345.12000);
+    pais.setId(1);
+    pais.setNome("italia");
+    pais.setPopulacao(91);
+    pais.setArea(12345.12000);
+    pais.criar();
+    System.out.println(pais);
+    
+    pais = new Pais(8, "Italia", 91, 12345.12000);
+    pais.setId(2);
+    pais.setNome("italia");
+    pais.setPopulacao(91);
+    pais.setArea(12345.12000);
+    pais.criar();
+    System.out.println(pais);
+
+
+	}
+	@Test
+	public void test02Atualizar() {
+		System.out.println("atualizar");
+		pais.setPopulacao(123456);
+		copia.setPopulacao(123456);
+		pais.atualizar();
+		pais.carregar();
+		
+			
+
+	}
+	@Test
+	public void test03Excluir() {
+		System.out.println("excluir");
+	}
+	
+	
+
+}

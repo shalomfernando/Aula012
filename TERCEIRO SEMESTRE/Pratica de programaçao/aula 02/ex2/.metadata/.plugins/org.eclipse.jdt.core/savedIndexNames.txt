@@ -1,0 +1,6 @@
+INDEX VERSION 1.130+J:\TERCEIRO SEMESTRE\Pratica de programaçao\aula 02\ex2\.metadata\.plugins\org.eclipse.jdt.core
+1488688393.index
+1629939972.index
+4218769968.index
+3391143166.index
+1853850383.index
