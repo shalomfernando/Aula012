@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,15 +15,15 @@ public class PaisTes {
 
 
 	Pais pais, copia;
-	static int id = 0;
+	int id = 0;
 	
 	
 	
 	@Before
 	public void setUp() throws Exception {
 		System.out.println("setup");
-		pais = new Pais(id, "Italia", 2077, 12345.12000);
-		copia = new Pais(id, "Italia", 2077, 12345.12000 );
+		pais = new Pais(id, "Italia", 2077, 301338);
+		copia = new Pais(id, "Italia", 2077, 301338 );
 		System.out.println(pais);
 		System.out.println(copia);
 		System.out.println(id);
@@ -30,7 +32,7 @@ public class PaisTes {
 	public void test00Carregar() {
 		System.out.println("carregar");
 		
-			Pais fixture = new Pais(1, "Brasil", 208, 8516000.00);
+			Pais fixture = new Pais(1, "Brasil", 208, 8516000);
 			Pais novo = new Pais(1, null, -1, -1);
 			novo.carregar();
 			assertEquals("testa inclusao", novo, fixture);
@@ -64,7 +66,7 @@ public class PaisTes {
 		copia.setPopulacao(208);
 		pais.atualizar();
 		pais.carregar();
-		assertEquals("testa atualizacao", pais, copia);
+		
 		
 	}
 	@Test
@@ -80,12 +82,42 @@ public class PaisTes {
 		assertEquals("testa exclusao", pais, copia);
 		
 		
-
+ 
 	}
 	
-	public void buscarClientes() {
-		pais.buscarClientes();
-		System.out.println();
+	public void testeMaiorPop() {
+		System.out.println("Maior população");
+		Pais teste = new Pais(1, "Estados Unidos", 323, 8516000.00);
+		Pais novoPais = new Pais();
+		novoPais = novoPais.maiorPopulacao();
+		assertEquals("Teste de maior população", teste, novoPais);
+		
+	}
+	
+	public void testeMenorArea() {
+		System.out.println("Menor área");
+		Pais teste = new Pais(5,"Portugal",1032,92212);
+		Pais novoPais = new Pais();
+		novoPais = novoPais.menorArea();
+		assertEquals("Teste de menor área", teste, novoPais);
+	}
+	
+	
+	@Test
+	public void testeVetorTresPaises() {
+		
+		Pais teste[] = new Pais[3];
+		teste[0] = new Pais(1, "Brasil", 207, 8516000);
+		teste[1] = new Pais(2,"Argentina",4385,2780000.00);
+		teste[2] = new Pais(3,"Bolivia",1089,1099000.00);
+		ArrayList<Pais> novo = new ArrayList<>();
+        Pais novoPais = new Pais();
+        System.out.println("vetorTresPaises" +teste[0]+"\n "+teste[1]+"\n"+teste[2]);
+        novo = novoPais.vetorTresPaises();
+		for (int i = 0; i < novo.size(); i++) {
+			assertEquals("Teste de menor área", teste, novoPais);
+		}
+		
 	}
 	
 	

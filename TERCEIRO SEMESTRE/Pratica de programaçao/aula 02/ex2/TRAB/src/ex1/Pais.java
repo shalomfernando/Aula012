@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
 public class Pais {
 	private int id;
 	private String nome;
@@ -143,33 +145,78 @@ public class Pais {
 		}
 	}
 	
-	public static ArrayList<Pais> buscarClientes( ) {
-		ArrayList<Pais> lista = new ArrayList<>();
-		 String sqlSelect = "SELECT id, nome, fone FROM CLIENTE";
-		try (Connection conn = obtemConexao();
-				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-			stm.setInt(1, getId());
-		try (ResultSet rs = stm.executeQuery();) {
-	
-		while(rs.next()){
-            Pais pais = new Pais();
-            pais.setId(rs.getInt("id"));
-            pais.setNome(rs.getString("nome"));
-            pais.setPopulacao(rs.getLong("populacao"));
-            pais.setArea(rs.getDouble("area"));
-            lista.add(pais);
-            
+	public Pais maiorPopulacao() {
+		Pais populacao = new Pais();
+		String sqlSelect = "SELECT MAX(populacao) FROM Pais";
+		
+		try(Connection conn = obtemConexao();
+						PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			try(ResultSet rs = stm.executeQuery()) {
+				if(rs.next()) {
+					populacao.setPopulacao(rs.getLong("populacao"));
+				}
+				else {
+					populacao.setPopulacao(-1);
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.getStackTrace());
 		}
 		
+		return populacao;
+	}
 	
-	}
-		catch(Exception e){
-	         e.printStackTrace();
+	public Pais menorArea() {
+		Pais area = new Pais();
+		String sqlSelect = "SELECT MIN(area) FROM Pais";
+		
+		try(Connection conn = obtemConexao();
+						PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			try(ResultSet rs = stm.executeQuery()) {
+				if(rs.next()) {
+					area.setArea(rs.getDouble("area"));
+				}
+				else {
+					area.setArea(-1);
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException e1) {
+			System.out.println(e1.getStackTrace());
 		}
-		}return lista;
 		
+		return area;
 	}
-		
+	
+	public ArrayList<Pais> vetorTresPaises() {
+		Connection conn = null;
+		try {
+			conn = obtemConexao();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		 String sqlSelect = "SELECT * FROM Pais";
+		PreparedStatement prepare = null;
+		ResultSet result = null;
+		ArrayList<Pais> lista = new ArrayList<Pais>();
+		try {
+			prepare = conn.prepareStatement(sqlSelect);
+			result = prepare.executeQuery();
+			while (result.next()) {
+				Pais pais = new Pais();
+				pais.setNome(result.getString("Brasil"));
+				pais.setNome(result.getString("Japão"));
+				pais.setNome(result.getString("Bolívia"));
+				lista.add(pais);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
